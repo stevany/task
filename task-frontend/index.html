@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Create a ToDo list app in AngularJS</title>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  </head>
+<body ng-app="app" ng-controller="TaskController">
+<div>
+	<div class="form-group">	
+		<label>Task</label>
+		<input type="text" ng-model="task.name" size="30"/>
+	</div>
+	<div class="form-group">
+		<label>Description</label>
+		<textarea class="form-control" rows="5" ng-model="task.description"></textarea>
+	</div>
+	<div class="form-group">
+		<button type="button" class="btn btn-primary" ng-hide="task.id" ng-click="save(task)">Add</button>
+		<button type="button" class="btn" ng-show="task.id" ng-click="update(task)">Update</button>
+		<button type="button" class="btn" ng-show="task" ng-click="cancel()">Cancel</button>
+	</div>	
+			
+</div>
+<div>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in tasks" ng-hide="item.id==task.id">
+			<td>{{item.name}}</td>
+			<td>{{item.description}}</td>
+			<td>
+				<button type="button"  ng-click="edit(item)">Update</button>
+				<button type="button"  ng-click="del(item)">Delete</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>	
+</body>
+</html>
+	
